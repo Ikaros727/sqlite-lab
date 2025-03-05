@@ -1,0 +1,26 @@
+syntax = "v1"
+
+import "sqlite.api"
+
+@server(
+    group: sqlite/v1
+    prefix: sqlite/v1
+)
+
+service sqliteLab {
+    @doc ""
+    @handler DDL
+    post /ddl (DDLReq) returns (DDLResp)
+
+    @doc "执行 CREATE 方法"
+    @handler Create
+    post /dml/create (CreateReq) returns (CreateResp)
+
+    @doc "执行 Update 方法"
+    @handler Update
+    post /dml/update (UpdateReq) returns (UpdateResp)
+
+    @doc "执行 Delete 方法"
+    @handler Delete
+    post /dml/delete (DeleteReq) returns (DeleteResp)
+}

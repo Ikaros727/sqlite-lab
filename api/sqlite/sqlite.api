@@ -1,0 +1,75 @@
+syntax = "v1"
+
+import "../common/base.api"
+
+type (
+    ValPair {
+        col string `json:"col"`
+        val string `json:"val"`
+    }
+)
+
+type (
+    DDLReq {
+        sql string `json:"sql"`
+    }
+    DDLResp {
+        status Status `json:"status"`
+    }
+)
+
+type (
+    CreateReq {
+        database string `json:"database"`
+        valPairs []ValPair `json:"valPairs"`
+    }
+
+    CreateResp {
+        status Status `json:"status"`
+        data CreateData `json:"data"`
+    }
+
+    CreateData {
+        id int64 `json:"id"`
+    }
+)
+
+type (
+    UpdateReq {
+        database string `json:"database"`
+        valPairs []ValPair `json:"valPairs"`
+        where string `json:"where"`
+        whereArgs []string `json:"whereArgs"`
+    }
+
+    UpdateResp {
+        status Status `json:"status"`
+        data UpdateData `json:"data"`
+    }
+
+    UpdateData {
+        rowsAffected int64 `json:"rowsAffected"`
+    }
+)
+
+type (
+    DeleteReq{
+
+    }
+
+    DeleteResp{
+        status Status `json:"status"`
+        data DeleteData `json:"data"`
+    }
+
+    DeleteData {
+        rowsAffected int64 `json:"rowsAffected"`
+    }
+)
+
+type (
+    QueryReq {
+        sql string `json:"sql"`
+        args []string `json:"args"`
+    }
+)
