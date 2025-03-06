@@ -1,0 +1,34 @@
+syntax = "v1"
+
+import "../common/base.api"
+
+type (
+    ExecReq {
+        Database string `json:"database,default=default"`
+        SQL string `json:"sql"`
+        Args []string `json:"args,optional"`
+    }
+
+    ExecResp {
+        Status Status `json:"status"`
+        Data ExecResult `json:"data"`
+    }
+
+    ExecResult {
+        ID int64 `json:"id"`
+        RowsAffected int64 `json:"rowsAffected"`
+    }
+)
+
+type (
+    RawReq {
+        Database string `json:"database,default=default"`
+        SQL string `json:"sql"`
+        Args []string `json:"args,optional"`
+    }
+
+    RawResp {
+        Status Status `json:"status"`
+        Data []map[string]interface{} `json:"data"`
+    }
+)

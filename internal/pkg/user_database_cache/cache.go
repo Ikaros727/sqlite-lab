@@ -10,7 +10,7 @@ import (
 
 const (
 	// userDBKeyFormat 用户数据库连接Key，例：<userID>/<database>
-	userDBKeyFormat = "%d/%s"
+	userDBKeyFormat = "%d-%s"
 )
 
 type UserDatabaseCache struct {
@@ -34,7 +34,7 @@ func (u *UserDatabaseCache) MustLoad(userID int64, database string) (db *gorm.DB
 	key := fmt.Sprintf(userDBKeyFormat, userID, database)
 	inst, found := u.c.Get(key)
 	if !found {
-		inst, err = repo.NewSQLite(database)
+		inst, err = repo.NewSQLite(userID, database)
 		if err != nil {
 			return
 		}

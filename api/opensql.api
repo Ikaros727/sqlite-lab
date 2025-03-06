@@ -2,6 +2,6 @@ syntax = "v1"
 
 // 全局路由注册
 import (
-	"sqlite/route.api"
+	"opensql/route.api"
 )
 

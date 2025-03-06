@@ -6,7 +6,7 @@ package handler
 import (
 	"net/http"
 
-	sqlitev1 "github.com/Ikaros727/sqlite-lab/internal/handler/sqlite/v1"
+	opensqlv1 "github.com/Ikaros727/sqlite-lab/internal/handler/opensql/v1"
 	"github.com/Ikaros727/sqlite-lab/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -16,18 +16,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				//
 				Method:  http.MethodPost,
-				Path:    "/ddl",
-				Handler: sqlitev1.DDLHandler(serverCtx),
+				Path:    "/exec",
+				Handler: opensqlv1.ExecHandler(serverCtx),
 			},
 			{
-				// 执行 CREATE 方法
 				Method:  http.MethodPost,
-				Path:    "/dml/create",
-				Handler: sqlitev1.CreateHandler(serverCtx),
+				Path:    "/raw",
+				Handler: opensqlv1.RawHandler(serverCtx),
 			},
 		},
-		rest.WithPrefix("/sqlite/v1"),
+		rest.WithPrefix("/opensql/v1"),
 	)
 }

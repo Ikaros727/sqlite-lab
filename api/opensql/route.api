@@ -1,0 +1,16 @@
+syntax = "v1"
+
+import "types.api"
+
+@server(
+    group: opensql/v1
+    prefix: opensql/v1
+)
+
+service opensql {
+    @handler exec
+    post /exec (ExecReq) returns (ExecResp)
+
+    @handler raw
+    post /raw (RawReq) returns (RawResp)
+}

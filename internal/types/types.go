@@ -3,31 +3,31 @@
 
 package types
 
-type CreateData struct {
-	Id int64 `json:"id"`
+type ExecReq struct {
+	Database string   `json:"database,default=default"`
+	SQL      string   `json:"sql"`
+	Args     []string `json:"args,optional"`
 }
 
-type CreateReq struct {
-	Database string          `json:"database"`
-	ValPairs []CreateValPair `json:"valPairs"`
-}
-
-type CreateResp struct {
+type ExecResp struct {
 	Status Status     `json:"status"`
-	Data   CreateData `json:"data"`
+	Data   ExecResult `json:"data"`
 }
 
-type CreateValPair struct {
-	Col string `json:"col"`
-	Val string `json:"val"`
+type ExecResult struct {
+	ID           int64 `json:"id"`
+	RowsAffected int64 `json:"rowsAffected"`
 }
 
-type DDLReq struct {
-	Sql string `json:"sql"`
+type RawReq struct {
+	Database string   `json:"database,default=default"`
+	SQL      string   `json:"sql"`
+	Args     []string `json:"args,optional"`
 }
 
-type DDLResp struct {
-	Status Status `json:"status"`
+type RawResp struct {
+	Status Status                   `json:"status"`
+	Data   []map[string]interface{} `json:"data"`
 }
 
 type Status struct {
