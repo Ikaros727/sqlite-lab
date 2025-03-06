@@ -1,2 +1,2 @@
-build-api:
-	goctl api go --api api/sqliteLab.api --dir . --style go_zero
+gen-api:
+	goctl api go --api api/opensql.api --dir . --style go_zero

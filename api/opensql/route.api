@@ -5,6 +5,7 @@ import "types.api"
 @server(
     group: opensql/v1
     prefix: opensql/v1
+    jwt: JwtAuth
 )
 
 service opensql {
