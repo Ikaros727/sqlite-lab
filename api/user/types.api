@@ -1,0 +1,46 @@
+syntax = "v1"
+
+import "../common/base.api"
+
+type (
+    RegisterReq {
+        Username string `json:"username"`
+        Password string `json:"password"`
+        Email    string `json:"email"`
+    }
+
+    RegisterData {
+        UserId  int64  `json:"userId"`
+    }
+
+    RegisterResp {
+        Status Status     `json:"status"`
+        Data   RegisterData `json:"data"`
+    }
+
+    LoginReq {
+        Username string `json:"username"`
+        Password string `json:"password"`
+    }
+
+    LoginData {
+        Token   string `json:"token"`
+        UserId  int64  `json:"userId"`
+    }
+
+    LoginResp {
+        Status Status   `json:"status"`
+        Data   LoginData `json:"data"`
+    }
+
+    UserInfo {
+        Id       int64  `json:"id"`
+        Username string `json:"username"`
+        Email    string `json:"email"`
+    }
+
+    ProfileResp {
+        Status Status   `json:"status"`
+        Data   UserInfo `json:"data"`
+    }
+) 

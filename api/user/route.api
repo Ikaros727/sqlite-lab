@@ -1,0 +1,23 @@
+ syntax = "v1"
+
+import "types.api"
+
+@server(
+    jwt: Auth
+    group: user/v1
+    prefix: user/v1
+)
+
+service opensql {
+    @doc "用户注册"
+    @handler Register
+    post /user/v1/register (RegisterReq) returns (RegisterResp)
+    
+    @doc "用户登录"
+    @handler Login
+    post /user/v1/login (LoginReq) returns (LoginResp)
+    
+    @doc "获取用户信息"
+    @handler Profile
+    get /user/v1/profile returns (ProfileResp)
+}

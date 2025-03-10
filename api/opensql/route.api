@@ -3,9 +3,9 @@ syntax = "v1"
 import "types.api"
 
 @server(
+    jwt: JwtAuth
     group: opensql/v1
     prefix: opensql/v1
-    jwt: JwtAuth
 )
 
 service opensql {

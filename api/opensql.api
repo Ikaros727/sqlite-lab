@@ -3,5 +3,6 @@ syntax = "v1"
 // 全局路由注册
 import (
 	"opensql/route.api"
+	"user/route.api"
 )
 
